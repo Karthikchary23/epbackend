@@ -486,27 +486,3 @@ app.post('/verify-otp', (req, res) => {
       res.status(400).json({ message: 'Invalid OTP' });
   }
 });
-app.get("/checkvoter", async (req, res) => {
-  const { aadhar } = req.query;
-
-  try {
-    // Check if the Aadhar exists in the Voter collection
-    const voter = await Voter.findOne({ aadhar_number: aadhar });
-
-    if (voter) {
-      res.status(200).json({
-        exists: true,
-        name: voter.name,
-        address: voter.address,
-      });
-    } else {
-      res.status(404).json({ exists: false });
-    }
-  } catch (error) {
-    console.error("Error checking voter Aadhar:", error);
-    res.status(500).json({ message: "Server error" });
-  }
-});
-app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
-});
