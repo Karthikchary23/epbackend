@@ -17,7 +17,9 @@ const algorithm = 'aes-256-cbc';
 const keyNumber = 12345678901234567890123456789012; 
 const key = Buffer.from(String(keyNumber).padEnd(32, '0')).slice(0, 32); 
 const iv = Buffer.from('1234567890123456'); 
-
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 // Encrypt function
 function encrypt(text) {
   const cipher = crypto.createCipheriv(algorithm, key, iv);
