@@ -34,7 +34,7 @@ function decrypt(encryptedData) {
   return decrypted;
 }
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 // Get the directory name from the URL
 const __filename = fileURLToPath(import.meta.url);
